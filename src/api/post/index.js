@@ -1,8 +1,9 @@
 const Router = require("koa-router");
-const post = new Router();
-const postCtrl = require("./post.controller");
+const postRouter = new Router();
+const postCtrl = require("./post.controller.js");
 
-post.post("/post", postCtrl.postWrite);
-post.post("/post/:id", postCtrl.postDetail);
+postRouter.post("/write", postCtrl.create);
+postRouter.post("/:id", postCtrl.show);
+postRouter.get("/list", postCtrl.list);
 
-module.exports = post;
+module.exports = postRouter;

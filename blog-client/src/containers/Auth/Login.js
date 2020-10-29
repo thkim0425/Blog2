@@ -17,6 +17,11 @@ class Login extends Component {
   handleChange = (e) => {
     const { AuthActions } = this.props;
     const { name, value } = e.target;
+    console.log(AuthActions);
+    console.log("이다음게 name임.");
+    console.log(name);
+    console.log("이다음게 value임.");
+    console.log(value);
 
     AuthActions.changeInput({
       name,
