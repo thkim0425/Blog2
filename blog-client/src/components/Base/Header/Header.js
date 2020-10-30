@@ -10,7 +10,7 @@ const Positioner = styled.div`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 0px;
+  top: 0;
   width: 100%;
 `;
 //${shadow(1)}

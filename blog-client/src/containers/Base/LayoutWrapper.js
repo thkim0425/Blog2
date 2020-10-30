@@ -4,7 +4,6 @@ import oc from "open-color";
 
 // children 이 들어가는 곳
 const Contents = styled.div`
-  height: auto;
   background: ${oc.gray[1]};
   display: flex-column;
   align-items: center;

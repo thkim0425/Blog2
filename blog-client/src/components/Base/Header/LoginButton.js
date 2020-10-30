@@ -8,8 +8,7 @@ const BorderedButton = styled(Link)`
   font-weight: 600;
   color: ${oc.gray[0]};
   border: 1px solid ${oc.gray[0]};
-  padding: 0.5rem;
-  padding-bottom: 0.4rem;
+  padding: 0.5rem 0.5rem 0.4rem;
   cursor: pointer;
   border-radius: 2px;
   text-decoration: none;

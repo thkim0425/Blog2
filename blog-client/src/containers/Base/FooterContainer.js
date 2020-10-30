@@ -7,7 +7,7 @@ class FooterContainer extends Component {
     const { visible } = this.props;
     if (!visible) return null;
     console.log("call render...  containers/Base/FooterContainer.js");
-    return <Footer></Footer>;
+    return <Footer />;
   }
 }
 

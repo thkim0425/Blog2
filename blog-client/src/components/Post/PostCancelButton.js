@@ -8,6 +8,9 @@ const StyledButton = styled(Link)`
   margin-top: 1rem;
   padding-top: 0.6rem;
   padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: 1rem;
 
   background: ${oc.gray[6]};
   color: white;

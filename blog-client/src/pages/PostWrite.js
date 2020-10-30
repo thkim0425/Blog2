@@ -11,10 +11,11 @@ import {
 } from "components/Post";
 import * as postActions from "redux/modules/post";
 import * as authActions from "redux/modules/auth";
+import storage from "lib/storage";
 
 class PostWrite extends Component {
   handleChange = (e) => {
-    const { AuthActions } = this.props; //changeInput 빌려쓰는용도.
+    const { AuthActions } = this.props;
     const { name, value, form } = e.target;
     console.log("이다음게 name임.");
     console.log(name);
@@ -28,12 +29,20 @@ class PostWrite extends Component {
     });
   };
 
-  handleSavePost = async () => {};
+  handleSavePost = async () => {
+    const { form, author } = this.props;
+    const { title, letter } = form.toJS();
+
+    //현재 내 유저네임을 스토리지에서 가져옴.
+    const loggedInfo = storage.get("loggedInfo");
+    const username = loggedInfo["username"];
+    console.log(username);
+  };
 
   render() {
     console.log("postWrite component");
     //const { title } = this.props.form.toJS();
-    const { handleChange } = this;
+    const { handleChange, handleSavePost } = this;
     return (
       <PostWrapper>
         <InputWithLabel

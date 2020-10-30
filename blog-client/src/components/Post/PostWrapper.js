@@ -5,12 +5,10 @@ import { shadow } from "lib/styleUtils";
 
 // frame
 const Positioner = styled.div`
-  position: absolute;
-  top: 30%;
+  position: relative;
   left: 50%;
-  margin-top: 55px;
-  margin-bottom: 55px;
-  transform: translate(-50%, -50%);
+  max-width: 70%;
+  transform: translate(-50%, 10%);
 `;
 //border: 5px solid ${oc.red[3]};
 //position: absolute;
@@ -25,6 +23,7 @@ const LogoWrapper = styled.div`
   display: flex-column;
   align-items: center;
   justify-content: center;
+  padding-top: 5px;
 `;
 
 const Logo = styled.div`

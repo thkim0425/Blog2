@@ -31,7 +31,13 @@ const Wrapper = styled.div`
 //hover  는 마우스 올렸을때, active는 마우스 눌렀을때.
 
 const AuthButton = ({ children, onClick }) => (
-  <Wrapper onClick={onClick}>{children}</Wrapper>
+  <Wrapper
+    onClick={(e) => {
+      onClick && onClick(e);
+    }}
+  >
+    {children}
+  </Wrapper>
 );
 
 export default AuthButton;

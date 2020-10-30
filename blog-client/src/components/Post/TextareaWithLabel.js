@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   & + & {
     margin-top: 1rem;
   }
+  margin-top: 1rem;
 `;
 
 const Label = styled.div`
@@ -28,6 +29,7 @@ const Label = styled.div`
 */
 const Textarea = styled.textarea`
   width: 100%;
+  height: 300px;
   border: 1px solid ${oc.gray[3]};
   outline: none;
   border-radius: 0px;

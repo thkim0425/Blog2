@@ -10,10 +10,10 @@ const Title = styled.div`
 `;
 
 const AuthContent = ({ title, children }) => (
-  <div>
+  <React.Fragment>
     <Title>{title}</Title>
     {children}
-  </div>
+  </React.Fragment>
 );
 
 export default AuthContent;
