@@ -3,10 +3,10 @@ const Post = require("models/Post");
 // 글쓰기
 exports.create = async (ctx) => {
   // request body 에서 값들을 추출합니다
-  const { auther, title, letter } = ctx.request.body;
+  const { author, title, letter } = ctx.request.body;
 
   const post = new Post({
-    auther,
+    author,
     title,
     letter,
   });

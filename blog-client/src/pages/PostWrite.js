@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import axios from "axios";
 import {
   InputWithLabel,
   TextareaWithLabel,
@@ -9,57 +8,64 @@ import {
   PostCancelButton,
   PostWrapper,
 } from "components/Post";
-import * as postActions from "redux/modules/post";
-import * as authActions from "redux/modules/auth";
+
 import storage from "lib/storage";
 
 class PostWrite extends Component {
-  handleChange = (e) => {
-    const { AuthActions } = this.props;
-    const { name, value, form } = e.target;
-    console.log("이다음게 name임.");
-    console.log(name);
-    console.log("이다음게 value임.");
-    console.log(value);
+  constructor(props) {
+    super(props);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeLetter = this.handleChangeLetter.bind(this);
+    this.handleSavePost = this.handleSavePost.bind(this);
+    const loggedInfo = storage.get("loggedInfo");
+    const username = loggedInfo["username"];
+    this.state = { title: "", letter: "", author: username };
+  }
 
-    AuthActions.changeInput({
-      name,
-      value,
-      form,
-    });
+  handleChangeTitle = (e) => {
+    this.setState({ title: e.target.value });
+    console.log("title");
+    console.log(this.state.title);
+  };
+
+  handleChangeLetter = (e) => {
+    this.setState({ letter: e.target.value });
+    console.log("letter");
+    console.log(this.state.letter);
   };
 
   handleSavePost = async () => {
-    const { form, author } = this.props;
-    const { title, letter } = form.toJS();
-
-    //현재 내 유저네임을 스토리지에서 가져옴.
-    const loggedInfo = storage.get("loggedInfo");
-    const username = loggedInfo["username"];
-    console.log(username);
+    console.log(this.state.title);
+    console.log(this.state.author);
+    console.log(this.state.letter);
+    const { history } = this.props;
+    axios
+      .post("http://localhost:3000/api/post/write", this.state)
+      .then(() => console.log("Post Created"))
+      .catch((err) => {
+        console.error(err);
+      });
+    history.push("/"); //send a post and go to "/"
   };
 
   render() {
     console.log("postWrite component");
-    //const { title } = this.props.form.toJS();
-    const { handleChange, handleSavePost } = this;
     return (
       <PostWrapper>
         <InputWithLabel
           label="제목"
           name="title"
           placeholder="제목"
-          //value={title}
-          onChange={handleChange}
+          onChange={this.handleChangeTitle}
         />
         <TextareaWithLabel
           label="본문"
           name="letter"
           placeholder="본문"
-          onChange={handleChange}
+          onChange={this.handleChangeLetter}
         />
         <ButtonAlignWrapper>
-          <SubmitButton>올리기</SubmitButton>
+          <SubmitButton onClick={this.handleSavePost}>올리기</SubmitButton>
           <PostCancelButton>취소하기</PostCancelButton>
         </ButtonAlignWrapper>
       </PostWrapper>
@@ -67,10 +73,10 @@ class PostWrite extends Component {
   }
 }
 
-export default connect(
-  (state) => ({ form: state.auth.getIn(["post", "form"]) }),
-  (dispatch) => ({
-    PostActions: bindActionCreators(postActions, dispatch),
-    AuthActions: bindActionCreators(authActions, dispatch),
-  })
-)(PostWrite);
+export default PostWrite;
+
+// export const PostContext = React.createContext(
+//   this.state.title,
+//   this.state.letter,
+//   this.state.author
+// );
