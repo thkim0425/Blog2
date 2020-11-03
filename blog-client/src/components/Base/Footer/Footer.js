@@ -5,12 +5,10 @@ import { media, shadow } from "lib/styleUtils";
 
 // 하단 고정
 const Positioner = styled.div`
-  position: absolute; //하단 고정용
-  bottom: 0; // offset 속성 : 빈틈없이 맨 아래에 고정
-  left: 0; // 좌로부터 꽉차게 고정
-  right: 0; // 우측도 꽉차게 고정
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 55px;
   ${shadow(1)}
 `;
 //position : absolute

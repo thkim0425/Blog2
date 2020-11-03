@@ -39,7 +39,7 @@ class App extends Component {
       <>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
-        <Route path="/post" component={PostWrite} />
+        <Route exact path="/post" component={PostWrite} />
         {console.log("App.js render 함수 종료시점.")}
       </>
     );

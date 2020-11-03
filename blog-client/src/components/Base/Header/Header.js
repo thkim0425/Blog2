@@ -9,8 +9,6 @@ import { Link } from "react-router-dom";
 const Positioner = styled.div`
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 0;
   width: 100%;
 `;
 //${shadow(1)}
@@ -20,7 +18,7 @@ const WhiteBackground = styled.div`
   background: gray;
   display: flex;
   justify-content: center;
-  height: auto;
+  //height: auto;
 `;
 
 // 해더의 내용
@@ -31,8 +29,8 @@ const HeaderContents = styled.div`
   flex-direction: row;
   align-items: center;
 
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: 20px;
+  padding-left: 20px;
   ${media.wide`
         width: 992px;
     `}
@@ -47,7 +45,6 @@ const Logo = styled.div`
   font-size: 2em;
   letter-spacing: 2px;
   color: ${oc.violet[0]};
-  font-family: "Rajdhani";
   text-align: center;
   margin-top: 50px;
 `;
@@ -58,17 +55,18 @@ const LogoLink = styled(Link)`
   font-size: 1.4rem;
   letter-spacing: 2px;
   color: ${oc.gray[0]};
-  font-family: "Rajdhani";
 
   text-decoration: none;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
 `;
+
+// &:focus,
+//   &:hover,
+//   &:visited,
+//   &:link,
+//   &:active {
+//     text-decoration: none;
+//   }
+// 없어도됨.
 
 // 중간 여백
 const Spacer = styled.div`

@@ -24,11 +24,30 @@ exports.create = async (ctx) => {
 };
 
 // 하나의 포스트 detail하게 보기.
-exports.show = (ctx) => {
-  ctx.body = "postshow";
+exports.show = async (ctx) => {
+  const { id } = ctx.params;
+  let post;
+  try {
+    post = await Post.findById(id).exec();
+  } catch (e) {
+    return ctx.throw(500, e);
+  }
+  if (!post) {
+    ctx.status = 404;
+    ctx.body = { message: "post not found" };
+    return;
+  }
+  ctx.body = post;
 };
 
 // 전체 리스트 보기.
-exports.list = (ctx) => {
-  ctx.body = "postlist";
+exports.list = async (ctx) => {
+  let posts;
+  try {
+    posts = await Post.find().exec();
+  } catch (e) {
+    return ctx.throw(500, e);
+  }
+
+  ctx.body = posts;
 };
