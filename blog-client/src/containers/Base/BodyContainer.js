@@ -5,24 +5,39 @@ import axios from "axios";
 import { PostCard } from "components/PostCard";
 
 class BodyContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      post: [],
+    };
+
+    axios
+      .get("http://localhost:3000/api/post")
+      .then((res) => {
+        //console.log(res);
+        this.setState({ post: res.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   render() {
     const { visible } = this.props;
     if (!visible) return null;
 
-    axios
-      .get("http://localhost:3000/api/post")
-      .then(() => console.log("get postlist"))
-      .catch((err) => {
-        console.error(err);
+    console.log("post: ", this.state.post.length);
+
+    const mapToComponent = (data) => {
+      return data.map((post, i) => {
+        console.log(post);
+        return <PostCard post={post} />;
       });
+    };
 
     return (
       <>
-        <PostList>
-          <PostCard />
-          <PostCard />
-          <PostCard />
-        </PostList>
+        <PostList>{mapToComponent(this.state.post)}</PostList>
       </>
     );
   }
@@ -38,15 +53,8 @@ export default connect(
 const PostList = styled.div`
   height: 420px;
   width: 800px;
-  background-color: #000000;
+  background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 `;
-
-// axios
-//       .post("http://localhost:3000/api/post/write", this.state)
-//       .then(() => console.log("Post Created"))
-//       .catch((err) => {
-//         console.error(err);
-//       });
