@@ -11,7 +11,7 @@ class Home extends Component {
       <LayoutWrapper>
         <HeaderContainer />
         <BodyContainer />
-        <FooterContainer />
+        {/* <FooterContainer /> */}
       </LayoutWrapper>
     );
   }

@@ -9,7 +9,7 @@ const Positioner = styled.div`
   flex-direction: column;
   width: 100%;
   height: 55px;
-  ${shadow(1)}
+  ${shadow(1)};
 `;
 //position : absolute
 //하단고정

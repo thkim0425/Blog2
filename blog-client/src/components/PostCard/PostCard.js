@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { PostIdConsumer } from "../../contexts/PostContext";
 
 class PostCard extends Component {
   constructor(props) {
@@ -30,11 +29,6 @@ class PostCard extends Component {
         <Title>{this.props.post.title}</Title>
         <Author>{this.props.post.author}</Author>
         <Letter>{this.props.post.letter}</Letter>
-        {/* <div>{this.props.post._id}</div> */}
-        {/* <PostIdConsumer>
-          {(_id) => <DeleteButton>{_id.state.value}</DeleteButton>}
-        </PostIdConsumer> */}
-
         <DeleteButton onClick={this.handleDeletePost}>글 지우기</DeleteButton>
       </Card>
     );
