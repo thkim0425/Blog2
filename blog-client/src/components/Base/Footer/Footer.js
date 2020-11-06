@@ -9,6 +9,7 @@ const Positioner = styled.div`
   flex-direction: column;
   width: 100%;
   height: 55px;
+  margin: 50px 0 0 0;
   ${shadow(1)};
 `;
 //position : absolute

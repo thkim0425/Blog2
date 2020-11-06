@@ -51,11 +51,12 @@ export default connect(
 
 // postcard 가 들어가는 곳
 const PostList = styled.div`
-  height: 420px;
+  height: auto;
+  //min-height: 380px;
   width: 800px;
-  background-color: #ffffff;
+  //border: 3px solid black;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 0 300px;
+  align-contents: center;
 `;
