@@ -39,7 +39,7 @@ class PostWrite extends Component {
     console.log(this.state.author);
     console.log(this.state.letter);
     const { history } = this.props;
-    axios
+    await axios
       .post("http://localhost:3000/api/post/write", this.state)
       .then(() => console.log("Post Created"))
       .catch((err) => {

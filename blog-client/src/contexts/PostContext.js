@@ -1,38 +1,26 @@
-// This is a temporary code.
-//
-//
-//
+import React, { Component } from "react";
 
-// import React, { Component, createContext } from "react";
+const Context = React.createContext();
 
-// const { Provider, Consumer: PostConsumer } = createContext();
+const { Provider, Consumer: PostIdConsumer } = Context;
 
-// class PostProvider extends Component {
-//   state = {
-//     title: "",
-//     letter: "",
-//     author: "",
-//   };
+class PostIdProvider extends Component {
+  state = {
+    value: "랄랄라",
+  };
 
-//   actions = {
-//     setValue: (value) => {
-//       this.setState({ value });
-//     },
-//   };
+  actions = {
+    setValue: (value) => {
+      this.setState({ value });
+    },
+  };
 
-//   render() {
-//     const { state, actions } = this;
-//     const value = { state, actions };
-//     return <Provider value={value}>{this.props.children}</Provider>;
-//   }
-// }
+  render() {
+    const { state, actions } = this;
 
-// export { PostProvider, PostConsumer };
+    const value = { state, actions };
+    return <Provider value={value}>{this.props.children}</Provider>;
+  }
+}
 
-// // const PostContext = React.createContext(
-// //   this.state.title,
-// //   this.state.letter,
-// //   this.state.author
-// // );
-
-// // export default PostContext;
+export { PostIdProvider, PostIdConsumer };

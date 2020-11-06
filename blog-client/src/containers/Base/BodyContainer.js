@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import { PostCard } from "components/PostCard";
+import { PostIdConsumer } from "../../contexts/PostContext";
 
 class BodyContainer extends Component {
   constructor(props) {
@@ -29,8 +30,7 @@ class BodyContainer extends Component {
     console.log("post: ", this.state.post.length);
 
     const mapToComponent = (data) => {
-      return data.map((post, i) => {
-        console.log(post);
+      return data.map((post) => {
         return <PostCard post={post} />;
       });
     };
@@ -42,6 +42,7 @@ class BodyContainer extends Component {
     );
   }
 }
+
 export default connect(
   (state) => ({
     visible: state.base.getIn(["header", "visible"]),
@@ -49,7 +50,7 @@ export default connect(
   (dispatch) => ({})
 )(BodyContainer);
 
-// children 이 들어가는 곳
+// postcard 가 들어가는 곳
 const PostList = styled.div`
   height: 420px;
   width: 800px;
@@ -57,4 +58,5 @@ const PostList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  margin: 0 300px;
 `;

@@ -23,7 +23,7 @@ exports.create = async (ctx) => {
   ctx.body = post;
 };
 
-// 하나의 포스트 detail하게 보기.
+// 하나의 포스트 detail하게 보기. (구현안됨.)
 exports.show = async (ctx) => {
   const { id } = ctx.params;
   let post;
@@ -38,6 +38,21 @@ exports.show = async (ctx) => {
     return;
   }
   ctx.body = post;
+};
+
+// Delete Post
+exports.deletePost = async (ctx) => {
+  const { id } = ctx.params;
+  try {
+    await Post.findByIdAndRemove(id).exec();
+  } catch (e) {
+    if (e.name === "CastError") {
+      ctx.status = 400;
+      return;
+    }
+  }
+
+  ctx.status = 204; // No Content
 };
 
 // 전체 리스트 보기.
