@@ -66,6 +66,7 @@ background-color : #333333;
 color : #FFFFFF;
 text-align : center;
 padding-top : 20px;
+border-radius: 15px 15px 0 0 / 15px 15px 0 0;
 `;
 
 const Author = styled.div`
@@ -90,4 +91,5 @@ const DeleteButton = styled.button`
   width: 230px;
   height: 35px;
   border: none;
+  border-radius: 0 0 15px 15px / 0 0 15px 15px;
 `;
